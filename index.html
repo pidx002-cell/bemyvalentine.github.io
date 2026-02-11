@@ -164,6 +164,7 @@
         <div id="question-ui">
             <div class="image-container">
                 <img id="mainImage" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjltcW1qdnU4Z2VocjVobjU4bzBzazFpNmV6c2tsOHc5NmpzaGZrcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Hl4DNsNGEJftrUSjSd/giphy.gif" alt="Cute Valentine">
+                <img id="secondImage" style="opacity: 0; display: none;" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXhxMTRmNjZ3bGR4NTJpY3AybGg2dWVueGttcWdnZTV0ZWZ6MzhoZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YLPOIP1jPu1N87yemm/giphy.gif" alt="Cute Valentine">
             </div>
 
             <p id="mainText" style="padding: 10px; word-wrap: break-word;color: #590d22;font-family: 'Arial Rounded MT Bold', sans-serif;font-size: 24px;font-weight: bold;white-space: break-spaces;">Would you be my valentine?</p>
@@ -176,7 +177,8 @@
 
         <div class="success-content" id="success-ui">
             <div class="image-container">
-                <img id="secondImage" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDB6Mm5vaTgxOGtwbGh1bmNwYXcwMDZubnVzeXdpM2VvMzZoODZwbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wvYNSqBAMDVx8CEYkt/giphy.gif" alt="Cute Valentine">
+                <img id="thirdImage" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDB6Mm5vaTgxOGtwbGh1bmNwYXcwMDZubnVzeXdpM2VvMzZoODZwbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wvYNSqBAMDVx8CEYkt/giphy.gif" alt="Cute Valentine">
+                <img id="fourthImage" style="display:none;" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWt6dWtkNmV3ODV3eGhuODg2YnBoZGFrcnRkdTF2YnFjb2dqdmZ0NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/z6TB0ZtiS8IDlHXmi9/giphy.gif" alt="Cute Valentine">
             </div>
 
             <p id="secondText" class="success-text">I know you will say yes, so here's a flower for you 💖</p>
@@ -191,21 +193,18 @@
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
         const mainImage = document.getElementById('mainImage');
+        const secondImage = document.getElementById('secondImage');
         const mainText = document.getElementById('mainText');
         const questionUI = document.getElementById('question-ui');
         const successUI = document.getElementById('success-ui');
         const bg = document.getElementById('bg-hearts');
-        const secondImage = document.getElementById('secondImage');
+        const thirdImage = document.getElementById('thirdImage');
         const secondText = document.getElementById('secondText');
+        const fourthImage = document.getElementById('fourthImage');
         const takeBtn = document.getElementById('takeBtn');
 
         let clickCount = 0;
         let canEscape = false;
-
-        const secondImgUrl = "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXhxMTRmNjZ3bGR4NTJpY3AybGg2dWVueGttcWdnZTV0ZWZ6MzhoZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YLPOIP1jPu1N87yemm/giphy.gif";
-
-        // Preload
-        new Image().src = secondImgUrl;
 
         // --- MOBILE FRIENDLY ESCAPE ---
         function escape() {
@@ -250,9 +249,12 @@
                 // Image Swap
                 mainImage.style.opacity = '0';
                 setTimeout(() => {
-                    mainImage.src = secondImgUrl;
-                    mainImage.style.opacity = '1';
-                    mainText.textContent = "You think you have a choice, huh?";
+                    mainImage.style.display = 'none';
+                    secondImage.style.display = '';
+                    setTimeout(() => {
+                        secondImage.style.opacity = '1';
+                        mainText.textContent = "You think you have a choice, huh?";
+                    }, (1000));
                 }, 750);
 
                 // Slow disappear
@@ -309,7 +311,9 @@
             // Celebration hearts
             setInterval(addHeart, 100);
             
-            secondImage.src = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWt6dWtkNmV3ODV3eGhuODg2YnBoZGFrcnRkdTF2YnFjb2dqdmZ0NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/z6TB0ZtiS8IDlHXmi9/giphy.gif";
+            thirdImage.style.display = 'none';
+            fourthImage.style.display = '';
+
             secondText.innerHTML = "I Love You Tomato Poreper <br> 💖 Baby 💖";
         });
     </script>
